@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id = "accountDAO" class="com.example.mycli.DAO.AccountDAO" abstract="true">
+    </bean>
+    <bean id = "memoryAccountDAO" class="com.example.mycli.DAO.MemoryAccountDAO">
+    </bean>
+
+    <bean id = "accountListingService" class="com.example.mycli.service.AccountListingService" abstract="true">
+    </bean>
+    <bean id = "accountListingServiceImpl" class="com.example.mycli.service.AccountListingServiceImpl">
+        <constructor-arg ref ="memoryAccountDAO"/>
+    </bean>
+
+    <bean id = "accountCreationServiceImpl" class="com.example.mycli.service.AccountCreationServiceImpl">
+        <constructor-arg ref ="memoryAccountDAO"/>
+    </bean>
+
+    <bean id = "bankCore" class="com.example.mycli.BankCore">
+        <constructor-arg ref ="accountCreationServiceImpl"/>
+    </bean>
+
+    <bean id = "myCLI" class="com.example.mycli.MyCLI" >
+    </bean>
+
+    <bean id = "accountBasicCLI" class="com.example.mycli.AccountBasicCLI">
+        <constructor-arg ref ="myCLI"/>
+        <constructor-arg ref ="bankCore"/>
+        <constructor-arg ref ="accountListingServiceImpl"/>
+    </bean>
+
+</beans>

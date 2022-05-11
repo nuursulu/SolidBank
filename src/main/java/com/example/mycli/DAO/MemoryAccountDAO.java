@@ -1,11 +1,10 @@
 package com.example.mycli.DAO;
 
-
 import com.example.mycli.entity.*;
 import java.util.*;
 
 public class MemoryAccountDAO implements AccountDAO {
-    private List<Account> accountList;
+    private List<Account> accountList = new ArrayList<>();;
 
     @Override
     public List<Account> getClientAccounts(String clientID) {
@@ -14,7 +13,6 @@ public class MemoryAccountDAO implements AccountDAO {
 
     @Override
     public void createNewAccount(Account account) {
-        accountList = new ArrayList<>();
         this.accountList.add(account);
     }
 
@@ -25,20 +23,37 @@ public class MemoryAccountDAO implements AccountDAO {
 
     @Override
     public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
-        List<Account> getClientAccountsByType;
+        List<Account> clientAccountsByTypeList = null;
+        for (Account account : accountList) {
+            if (account.getAccountType().equals(accountType) && account.getClientID().equals(clientID)) {
+                clientAccountsByTypeList.add(account);
+            }
+        }
+        if(clientAccountsByTypeList== null){
+            return clientAccountsByTypeList;
+        }
+        else return null;
 
-        return null;
     }
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
 
+        for (Account temp : accountList) {
+            if (temp.getId().equals(accountID) && temp.getClientID().equals(clientID)) {
+                return (AccountWithdraw) temp;
+            }
+        }
         return null;
     }
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-
+        for (Account account : accountList) {
+            if (account.getId().equals(accountID) && account.getClientID().equals(clientID)) {
+                return account;
+            }
+        }
         return null;
     }
 }
