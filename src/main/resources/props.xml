@@ -8,8 +8,6 @@
     <bean id = "memoryAccountDAO" class="com.example.mycli.DAO.MemoryAccountDAO">
     </bean>
 
-    <bean id = "accountListingService" class="com.example.mycli.service.AccountListingService" abstract="true">
-    </bean>
     <bean id = "accountListingServiceImpl" class="com.example.mycli.service.AccountListingServiceImpl">
         <constructor-arg ref ="memoryAccountDAO"/>
     </bean>

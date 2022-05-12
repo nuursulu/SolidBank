@@ -29,7 +29,7 @@ public class MemoryAccountDAO implements AccountDAO {
                 clientAccountsByTypeList.add(account);
             }
         }
-        if(clientAccountsByTypeList== null){
+        if(clientAccountsByTypeList != null){
             return clientAccountsByTypeList;
         }
         else return null;

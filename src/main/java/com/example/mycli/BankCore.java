@@ -13,11 +13,16 @@ public class BankCore {
     }
 
     public void createNewAccount(AccountType accountType, String clientID) {
+        if(accountType == null) {
+            System.out.println("AccountType not exist");
+            return;
+        }
         accountCreation.create(accountType, this.id, clientID, lastAccountNumber);
+        incrementLastAccountNumber();
     }
+
     private void incrementLastAccountNumber() {
         lastAccountNumber++;
     }
-
 }
 

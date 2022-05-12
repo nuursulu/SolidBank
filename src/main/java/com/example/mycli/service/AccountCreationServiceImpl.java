@@ -27,6 +27,7 @@ public class AccountCreationServiceImpl implements AccountCreationService {
                 break;
         }
         accountDAO.createNewAccount(account);
+        System.out.println("Bank account created");
 
     }
 }

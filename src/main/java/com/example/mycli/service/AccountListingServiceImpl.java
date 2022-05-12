@@ -5,7 +5,6 @@ import com.example.mycli.entity.AccountType;
 import com.example.mycli.entity.AccountWithdraw;
 import com.example.mycli.DAO.AccountDAO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AccountListingServiceImpl implements AccountListingService {
