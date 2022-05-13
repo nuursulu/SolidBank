@@ -1,7 +1,5 @@
 package com.example.mycli.entity;
 
-import com.example.mycli.entity.AccountType;
-
 public abstract class Account {
 
     private AccountType accountType;
