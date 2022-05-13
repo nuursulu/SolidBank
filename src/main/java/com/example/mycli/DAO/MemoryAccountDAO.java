@@ -1,28 +1,35 @@
 package com.example.mycli.DAO;
 
 import com.example.mycli.entity.*;
+import org.springframework.stereotype.Repository;
+
 import java.util.*;
 
+@Repository
 public class MemoryAccountDAO implements AccountDAO {
-    private List<Account> accountList = new ArrayList<>();;
+    private List<Account> accountList = new ArrayList<>();
 
     @Override
     public List<Account> getClientAccounts(String clientID) {
+
         return this.accountList;
     }
 
     @Override
     public void createNewAccount(Account account) {
+
         this.accountList.add(account);
     }
 
     @Override
     public void updateAccount(Account account) {
-        this.accountList.add(account);
+
+        //this.accountList.add(account);
     }
 
     @Override
     public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
+
         List<Account> clientAccountsByTypeList = null;
         for (Account account : accountList) {
             if (account.getAccountType().equals(accountType) && account.getClientID().equals(clientID)) {
@@ -49,6 +56,7 @@ public class MemoryAccountDAO implements AccountDAO {
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
+
         for (Account account : accountList) {
             if (account.getId().equals(accountID) && account.getClientID().equals(clientID)) {
                 return account;

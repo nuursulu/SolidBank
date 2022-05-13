@@ -1,4 +1,4 @@
-package com.example.mycli;
+package com.example.mycli.CLI;
 
 import com.example.mycli.entity.AccountType;
 
