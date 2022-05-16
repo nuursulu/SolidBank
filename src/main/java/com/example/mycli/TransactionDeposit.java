@@ -17,7 +17,10 @@ public class TransactionDeposit {
     }
 
     public void execute(Account account, double amount){
-        if(amount!=0 || account!=null) {
+        boolean isAccount =  account!=null;
+        boolean amountCorrect = amount!=0;
+        if(amountCorrect && isAccount) {
+        //if(account!= null) {
             accountDepositService.deposit(amount, account);
             Transaction transaction = new Transaction(amount + "$ transfered from " + account.getId() + " account");
             transactionDAO.addTransaction(transaction);

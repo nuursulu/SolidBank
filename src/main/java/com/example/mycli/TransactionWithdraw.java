@@ -25,7 +25,7 @@ public class TransactionWithdraw {
             System.out.println(amount + "$ transferred from " + accountWithdraw.getId() + " account");
         }
         else {
-            System.out.println("transaction failed");
+            System.out.println("Acount not withdrawable\ntransaction failed");
         }
     }
 }

@@ -1,5 +1,6 @@
-package com.example.mycli.CLI;
+package com.example.mycli.delivery;
 
+import com.example.mycli.CLI.CLIUI;
 import com.example.mycli.entity.AccountType;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +19,13 @@ public class MyCLI implements CLIUI {
 
     public double requestClientAmount() {
         System.out.println("Type Amount of money");
-        //boolean isCorrectAmount = Double.parseDouble(scanner.next());
-        return Double.parseDouble(scanner.next());
-        //return scanner.nextDouble();
+        try {
+            return Double.parseDouble(scanner.next());
+
+        } catch (Exception e) {
+            System.out.println("Incorrect data \nTry again");
+        }
+        return 0;
     }
 
     public String requestClientAccountNumber() {

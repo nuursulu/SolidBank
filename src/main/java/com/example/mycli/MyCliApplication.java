@@ -1,8 +1,8 @@
 package com.example.mycli;
 //
-//import com.example.mycli.CLI.AccountBasicCLI;
-//import com.example.mycli.CLI.TransactionDepositCLI;
-//import com.example.mycli.CLI.TransactionWithdrawCLI;
+//import com.example.mycli.delivery.AccountBasicCLI;
+//import com.example.mycli.delivery.TransactionDepositCLI;
+//import com.example.mycli.delivery.TransactionWithdrawCLI;
 //import org.springframework.boot.SpringApplication;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -70,7 +70,10 @@ package com.example.mycli;
 //
 //}
 
-import com.example.mycli.CLI.*;
+import com.example.mycli.delivery.AccountBasicCLI;
+import com.example.mycli.delivery.MyCLI;
+import com.example.mycli.delivery.TransactionDepositCLI;
+import com.example.mycli.delivery.TransactionWithdrawCLI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -80,6 +83,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class MyCliApplication implements CommandLineRunner {
     @Autowired
+    // create and configure beans use annotations
     private ApplicationContext context;
 
     public static void main(String[] args) {
@@ -90,7 +94,7 @@ public class MyCliApplication implements CommandLineRunner {
     public void run(String... arg0) throws Exception {
         boolean running = true;
         String clientID = "1";
-
+        // retrieve configured instance
         MyCLI myCLI = context.getBean(MyCLI.class);
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
@@ -100,22 +104,27 @@ public class MyCliApplication implements CommandLineRunner {
         System.out.printf("Welcome to CLI bank service\n");
         System.out.printf("Enter operation number: \n");
         System.out.printf(helpMessage);
+        // use configured instance
         while(running){
             switch(myCLI.getScanner().next()){
 
                 case "1":
+                    // return accounts list
                     accountBasicCLI.getAccounts(clientID);
                     break;
 
                 case "2":
+                    // create new account
                     accountBasicCLI.createAccountRequest(clientID);
                     break;
 
                 case "3":
+                    // deposit money
                     transactionDepositCLI.depositMoney(clientID);
                     break;
 
                 case "4":
+                    // withdraw money
                     transactionWithdrawCLI.withdrawMoney(clientID);
                     break;
 

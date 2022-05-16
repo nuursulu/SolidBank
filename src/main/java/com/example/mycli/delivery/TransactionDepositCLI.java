@@ -1,5 +1,6 @@
-package com.example.mycli.CLI;
+package com.example.mycli.delivery;
 
+import com.example.mycli.CLI.WithdrawDepositOperationCLIUI;
 import com.example.mycli.TransactionDeposit;
 import com.example.mycli.entity.Account;
 import com.example.mycli.service.AccountListingService;
@@ -15,9 +16,9 @@ public class TransactionDepositCLI {
     AccountListingService accountListing;
 
     public void depositMoney(String clientID){
-        Account account = accountListing.getClientWithdrawAccount(clientID, withdrawDepositOperationCLIUI.requestClientAccountNumber());
+        Account account = accountListing.getClientAccount(clientID, withdrawDepositOperationCLIUI.requestClientAccountNumber());
         if(account == null) System.out.println("Account with this ID not exist");
-        if(account!=null){
+        if(account != null){
             transactionDeposit.execute(account, withdrawDepositOperationCLIUI.requestClientAmount());
         }
     }
