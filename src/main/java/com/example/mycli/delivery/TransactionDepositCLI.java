@@ -15,10 +15,10 @@ public class TransactionDepositCLI {
     WithdrawDepositOperationCLIUI withdrawDepositOperationCLIUI;
     AccountListingService accountListing;
 
-    public void depositMoney(String clientID){
+    public void depositMoney(String clientID) {
         Account account = accountListing.getClientAccount(clientID, withdrawDepositOperationCLIUI.requestClientAccountNumber());
-        if(account == null) System.out.println("Account with this ID not exist");
-        if(account != null){
+        if (account == null) System.out.println("Account with this ID not exist");
+        if (account != null) {
             transactionDeposit.execute(account, withdrawDepositOperationCLIUI.requestClientAmount());
         }
     }

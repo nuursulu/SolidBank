@@ -1,16 +1,26 @@
 package com.example.mycli.entity;
 
-public abstract class Account {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-    private AccountType accountType;
+@Table(value = "Accounts")
+public class Account {
+
+    @Column(value = "accountType")
+    private String accountType;
+    @Id
+    @Column(value = "accountId")
     private String id;
+    @Column(value = "clientId")
     private String clientID;
+    @Column(value = "balance")
     private double balance;
+    @Column(value = "withdrawAllowed")
     private boolean withdrawAllowed;
 
-    public Account(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed) {
+    public Account(String accountType, String clientID, double balance, boolean withdrawAllowed) {
         this.accountType = accountType;
-        this.id = id;
         this.clientID = clientID;
         this.balance = balance;
         this.withdrawAllowed = withdrawAllowed;
@@ -24,11 +34,11 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public AccountType getAccountType() {
+    public String getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
 
@@ -63,7 +73,7 @@ public abstract class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "\nAccount{" +
                 "accountType=" + accountType +
                 ", id='" + id + '\'' +
                 ", clientID='" + clientID + '\'' +

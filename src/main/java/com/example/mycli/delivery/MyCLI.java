@@ -1,7 +1,6 @@
 package com.example.mycli.delivery;
 
 import com.example.mycli.CLI.CLIUI;
-import com.example.mycli.entity.AccountType;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -9,6 +8,7 @@ import java.util.Scanner;
 @Component
 public class MyCLI implements CLIUI {
     private Scanner scanner;
+
     MyCLI() {
         this.scanner = new Scanner(System.in);
     }
@@ -34,18 +34,18 @@ public class MyCLI implements CLIUI {
     }
 
     @Override
-    public AccountType requestAccountType() {
+    public String requestAccountType() {
 
         System.out.println("Choose account type\n[CHECKING, SAVING, FIXED]");
 
         switch (scanner.next()) {
             case "FIXED":
-                return AccountType.FIXED;
+                return "FIXED";
             case "SAVING":
-                return AccountType.SAVING;
+                return "SAVING";
             case "CHECKING":
-                return AccountType.CHECKING;
+                return "CHECKING";
         }
-        return null;
+        return "";
     }
 }

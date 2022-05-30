@@ -1,6 +1,5 @@
 package com.example.mycli;
 
-import com.example.mycli.entity.AccountType;
 import com.example.mycli.service.AccountCreationService;
 import org.springframework.stereotype.Component;
 
@@ -10,12 +9,13 @@ public class BankCore {
     private long lastAccountNumber = 1;
     private AccountCreationService accountCreation;
 
+
     public BankCore(AccountCreationService accountCreation) {
 
         this.accountCreation = accountCreation;
     }
 
-    public void createNewAccount(AccountType accountType, String clientID) {
+    public void createNewAccount(String accountType, String clientID) {
 
         if(accountType == null) {
             System.out.println("AccountType not exist");

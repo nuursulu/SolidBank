@@ -1,7 +1,7 @@
 package com.example.mycli.service;
 
-import com.example.mycli.entity.Account;
+import com.example.mycli.entity.AccountWithdraw;
 
 public interface AccountWithdrawService {
-    public void withdraw(double amount,  Account accountWithdraw);
+    void withdraw(double amount,  AccountWithdraw account);
 }
